@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="scoreboardApp">
+<head>
+<meta charset="utf-8">
+<title>Oscars Scoreboard</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="js/controllers.js"></script>
+</head>
+<body ng-controller="NomineesListCtrl">
+
+    <div id="header">
+        <div id="headerContent">
+            <div id="oscarsTitleContainer">
+            </div>
+        </div>
+    </div>
+    
+    <div id="chartBackgroundDivContainer">
+        <div id="chartBackgroundDiv">
+        </div>
+    </div>
+    
+    <div id="chartContainer"></div>
+    
+    <div id="spacer"></div>
+    
+    <div id="nomineesContainer" ng-controller="NomineesVisibilityCtrl" ng-repeat="nominee in nominees | orderBy:predicate">
+        <div id="{{nominee.category}}div" class="categoryContainer">
+       		<div id="{{nominee.category}}" class="categoryTitle" ng-click="showAndHide(nominee.category);"></div>
+            <h4 class="{{nominee.category}}text">{{nominee.categoryTitle}}</h4>
+            <p class="{{nominee.category}}text">{{nominee.name1}}</p>
+            <p class="{{nominee.category}}text">{{nominee.name2}}</p>
+            <p class="{{nominee.category}}text">{{nominee.name3}}</p>
+            <p class="{{nominee.category}}text">{{nominee.name4}}</p>
+            <p class="{{nominee.category}}text">{{nominee.name5}}</p>
+            <p class="{{nominee.category}}text">{{nominee.name6}}</p>
+            <p class="{{nominee.category}}text">{{nominee.name7}}</p>
+            <p class="{{nominee.category}}text">{{nominee.name8}}</p>
+            <p class="{{nominee.category}}text">{{nominee.name9}}</p>
+        </div>
+    </div>
+ 
+</body>
+</html>	
