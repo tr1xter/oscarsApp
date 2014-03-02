@@ -20,11 +20,11 @@ module.exports = {
 
         Category.update(categoryId, {
             correctChoice_id: choiceId
-        }, function(err, users) {
+        }, function(err, categories) {
             if (err) {
                 console.log(err);
             } else {
-                Category.publishUpdate(categoryId, users[0].toJSON());
+                Category.publishUpdate(categoryId, categories[0].toJSON());
             }
         });
 

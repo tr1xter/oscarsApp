@@ -9,7 +9,8 @@
 module.exports = {
 
     attributes: {
-  	    name: 'string'
+  	    name: 'string',
+        choices: {type: 'json', defaultsTo: {}}
     }
 
 };
