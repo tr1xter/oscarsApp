@@ -1,0 +1,2 @@
+# OscarVoter
+### a Sails application

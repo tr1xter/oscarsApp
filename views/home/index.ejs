@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" ng-app="scoreboardApp">
+<head>
+<meta charset="utf-8">
+<title>Oscars Scoreboard</title>
+<link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="styles/bootstrap.css">
+<script src="js/libs/underscore-min.js"></script>
+<script src="js/libs/jquery/jquery.min.js"></script>
+<script src="js/libs/angular/angular.js"></script>
+<script src="js/application/application.js"></script>
+<script src="js/application/services.js"></script>
+<script src="js/application/controllers.js"></script>
+<script src="js/libs/highcharts/highcharts-ng.js"></script>
+</head>
+<body ng-controller="NomineesListCtrl">
+
+    <div id="header">
+        <div id="headerContent">
+            <div id="oscarsTitleContainer">
+            </div>
+        </div>
+    </div>
+    
+    <div id="chartBackgroundDivContainer">
+        <div id="chartBackgroundDiv">
+        </div>
+    </div>
+    
+    <div ng-controller="ChartCtrl">
+        	<highchart id="chartContainer" config="chartConfig" ></highchart>
+    </div>
+    
+    <div id="spacer"></div>
+    
+    <div id="nomineesContainer" ng-controller="NomineesVisibilityCtrl">
+        <div id="{{category.name}}div" class="categoryContainer" ng-repeat="category in categories | orderBy:orderNum">
+       		<div id="{{category.name}}" class="categoryTitle" ng-click="showAndHide(category.name);">
+                <!-- TODO replace images as category names -->
+                <h4 class="{{category.name}}text">{{category.title}}</h4>
+            </div>
+            <div class="nominees">
+                <h4 class="{{category.name}}text">{{category.title}}</h4>
+                <div class="nominee" ng-repeat="nominee in category.choices">
+                    <p class="{{category.name}}text">{{nominee}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="js/libs/highcharts/highcharts.js"></script>
+<script src="js/libs/highcharts/exporting.js"></script>
+ 
+</body>
+</html>	
