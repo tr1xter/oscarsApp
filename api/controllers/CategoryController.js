@@ -16,10 +16,10 @@ module.exports = {
      */
     select: function(req, res) {
         var categoryId = req.param('category');
-        var choiceId = req.param('choice');
+        var choiceName = req.param('choice');
 
         Category.update(categoryId, {
-            correctChoice_id: choiceId
+            correctChoice: choiceName
         }, function(err, categories) {
             if (err) {
                 console.log(err);

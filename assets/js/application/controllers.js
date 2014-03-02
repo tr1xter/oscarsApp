@@ -18,8 +18,8 @@ MainCtrl = (function () {
         ]);
     }
 
-    Application.Controllers.controller("NomineesVisibilityCtrl", function ($scope) {
-        return $scope.showAndHide = function (nominee) {
+    Application.Controllers.controller("NomineesVisibilityCtrl", ['$scope', '$http', function ($scope, $http) {
+        $scope.showAndHide = function (nominee) {
             var $background;
 
             $('.categoryTitle').css('display', 'block');
@@ -30,10 +30,25 @@ MainCtrl = (function () {
             $('#' + nominee + 'div').css('width', '250px');
             $('#' + nominee).css('display', 'none');
             $background = $('#chartBackgroundDiv');
-            $background.css('background-image', 'url(images/nomineesPics/' + nominee + 'BG.jpg)');
+            $background.css('background-image', 'url(/images/nomineesPics/' + nominee + 'BG.jpg)');
             $background.hide().fadeIn(2000);
         };
-    });
+
+        /**
+         * Mark category choice as correct
+         *
+         * @param categoryId
+         * @param nomineeName
+         */
+        $scope.selectChoice = function (categoryId, nomineeName) {
+            if (globalControl) {
+                $http.post('/category/select', {
+                    category: categoryId,
+                    choice: nomineeName
+                });
+            }
+        }
+    }]);
 
 
     Application.Controllers.controller("ChartCtrl", ['$scope', 'UserService', function ($scope, UserService) {
