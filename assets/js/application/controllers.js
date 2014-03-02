@@ -55,18 +55,14 @@ MainCtrl = (function () {
         $scope.chartSeries = [];
 
         // Get users
-        UserService.initialized = function(users) {
+        UserService.changed = function() {
             // Filter unneeded data
-            users = _.map(users, function(user) {
+            $scope.chartConfig.series = _.map(UserService.items, function(user) {
                 return {
                     name: user.name,
                     data: user.data
                 }
             });
-
-            $scope.chartSeries = users;
-            $scope.$apply();
-            // TODO update chart
         };
 
         $scope.chartTypes = [
