@@ -10,12 +10,19 @@
 module.exports = {
 
     index: function(req, res) {
-        console.log('here');
         return res.view({
-            title: "Oscars Scoreboard"
+            title: "Oscars Scoreboard",
+            // Seriously quick and dirty
+            globalControl: false
         });
     },
 
+    control: function(req, res) {
+        return res.view('main/index', {
+            title: "Oscars Scoreboard Control",
+            globalControl: true
+        });
+    },
 
   /**
    * Overrides for the settings in `config/controllers.js`
@@ -23,5 +30,4 @@ module.exports = {
    */
   _config: {}
 
-  
 };
