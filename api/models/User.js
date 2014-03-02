@@ -22,7 +22,7 @@ module.exports = {
                     Category.findOne({name: categoryName}).done(function(err, category) {
                         // Check choice
                         if (!err) {
-                            if (category && category.correctChoice == choices[category]) {
+                            if (category && category.correctChoice == choices[categoryName]) {
                                 points += category.points;
                             }
                         } else {
