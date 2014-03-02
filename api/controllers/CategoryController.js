@@ -25,6 +25,14 @@ module.exports = {
                 console.log(err);
             } else {
                 Category.publishUpdate(categoryId, categories[0].toJSON());
+
+                // Update user points
+                User.find().done(function(err, users) {
+                    for (var i = 0; i < users.length; i++) {
+                        var user = users[i];
+                        User.publishUpdate(user.id, user.toJSON());
+                    }
+                });
             }
         });
 
