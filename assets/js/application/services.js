@@ -84,3 +84,7 @@ function serviceFactory(modelName) {
 Application.Services.service('CategoryService', function() {
     return serviceFactory("category");
 });
+
+Application.Services.service('UserService', function() {
+    return serviceFactory("user");
+});

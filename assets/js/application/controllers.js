@@ -35,7 +35,14 @@ MainCtrl = (function () {
         };
     });
 
-    Application.Controllers.controller("ChartCtrl", function ($scope) {
+
+    Application.Controllers.controller("ChartCtrl", ['$scope', 'UserService', function ($scope, UserService) {
+        // Get users
+        UserService.initialized = function(users) {
+            $scope.users = users;
+            $scope.$apply();
+        };
+
         $scope.chartTypes = [
             {
                 "id": "bar",
@@ -125,7 +132,7 @@ MainCtrl = (function () {
             },
             loading: false
         };
-    });
+    }]);
 
     return MainCtrl;
 
