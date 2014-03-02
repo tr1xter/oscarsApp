@@ -37,10 +37,21 @@ MainCtrl = (function () {
 
 
     Application.Controllers.controller("ChartCtrl", ['$scope', 'UserService', function ($scope, UserService) {
+        $scope.chartSeries = [];
+
         // Get users
         UserService.initialized = function(users) {
-            $scope.users = users;
+            // Filter unneeded data
+            users = _.map(users, function(user) {
+                return {
+                    name: user.name,
+                    data: user.data
+                }
+            });
+
+            $scope.chartSeries = users;
             $scope.$apply();
+            // TODO update chart
         };
 
         $scope.chartTypes = [
@@ -49,48 +60,7 @@ MainCtrl = (function () {
                 "title": "Bar"
             }
         ];
-        $scope.chartSeries = [
-            {
-                "name": "Aleksi",
-                "data": [12]
-            },
-            {
-                "name": "Antti",
-                "data": [13]
-            },
-            {
-                "name": "Julius",
-                "data": [15]
-            },
-            {
-                "name": "Mikko",
-                "data": [11]
-            },
-            {
-                "name": "Jukka",
-                "data": [18]
-            },
-            {
-                "name": "Pertti",
-                "data": [14]
-            },
-            {
-                "name": "Esko",
-                "data": [15]
-            },
-            {
-                "name": "Jaakko",
-                "data": [16]
-            },
-            {
-                "name": "Ismo",
-                "data": [12]
-            },
-            {
-                "name": "Kalle",
-                "data": [17]
-            }
-        ];
+
         return $scope.chartConfig = {
             options: {
                 chart: {
