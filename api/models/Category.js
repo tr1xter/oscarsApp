@@ -13,7 +13,7 @@ module.exports = {
         points: 'integer',
         name: 'string', // system name
         title: 'string',
-        correctChoice_id: 'string',
+        correctChoice: 'string',
         choices: 'array'
     }
 
