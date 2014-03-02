@@ -100,7 +100,7 @@ MainCtrl = (function () {
                 text: 'Score'
             },
             tooltip: {
-                enabled: false
+                enabled: true
             },
             credits: {
                 enabled: false
@@ -109,7 +109,7 @@ MainCtrl = (function () {
                 enabled: false
             },
             legend: {
-                enabled: false
+                enabled: true
             },
             loading: false
         };
